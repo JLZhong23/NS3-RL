@@ -1,0 +1,143 @@
+\documentclass[a4paper,12pt]{article} % article, report, book
+\usepackage{ifthen}
+
+\usepackage{fontspec}
+
+\setmainfont[Ligatures={Common,TeX}]{TeXGyreTermes-Regular}
+\setsansfont[Ligatures={Common,TeX}]{Droid Sans}
+\setmonofont{CMU Typewriter Text}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+\usepackage{luatexja-fontspec}
+\setmainjfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+\setsansjfont{KaiTi}
+\defaultjfontfeatures{JFM=kaiming}
+\newjfontfamily\HEI{SimSun}
+\newjfontfamily\KAI{SimSun}
+\newjfontfamily\FANGSONG{SimSun}
+
+
+\usepackage{zhnumber}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  top=1.2in,
+  bottom=1.2in,
+  left=1in,
+  right=1in,
+  includefoot
+}
+\ifthenelse{\isundefined{\pagewidth}}{
+  \pdfpagewidth=\paperwidth
+  \pdfpageheight=\paperheight
+}{
+  \pagewidth=\paperwidth
+  \pageheight=\paperheight
+}
+
+\usepackage{color}
+\usepackage[unicode]{hyperref}
+\definecolor{hyperreflinkred}{RGB}{128,23,31}
+\hypersetup{
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=true,
+  allcolors=hyperreflinkred,
+  linktoc=page,
+  plainpages=false,
+  pdfpagelabels=true,
+  pdfstartview={XYZ null null 1}
+}
+\makeatletter
+\def\title#1{\gdef\@title{#1}\hypersetup{pdftitle={#1}}}
+\def\author#1{\gdef\@author{#1}\hypersetup{pdfauthor={#1}}}
+\makeatother
+
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt plus 2pt minus 1pt}
+\linespread{1.2}\selectfont
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{titlesec}
+\usepackage[inline]{enumitem}
+\setlist{noitemsep,partopsep=0pt,topsep=.8ex}
+\setlist[1]{labelindent=\parindent}
+\setlist[enumerate,1]{label=\arabic*.,ref=\arabic*}
+\setlist[enumerate,2]{label*=\arabic*,ref=\theenumi.\arabic*}
+\setlist[enumerate,3]{label=\emph{\alph*}),ref=\theenumii\emph{\alph*}}
+\setlist[description]{font=\bfseries}
+
+\def\indexname{索引}
+\def\figurename{图}
+\def\tablename{表}
+\ifthenelse{\isundefined{\bibname}}
+{
+    \def\refname{参考文献}
+}
+{
+    \def\bibname{参考文献}
+}
+\def\contentsname{目录}
+\def\appendixname{附录}
+\def\listfigurename{插图索引}
+\def\listtablename{表格索引}
+\def\equationautorefname{公式}
+\def\footnoteautorefname{脚注}
+\def\itemautorefname~#1\null{第~#1~项\null}
+\def\figureautorefname{图}
+\def\tableautorefname{表}
+\def\appendixautorefname{附录}
+\expandafter\def\csname\appendixname autorefname\endcsname{\appendixname}
+\ifthenelse{\not\isundefined{\chapter}}
+{
+    \def\chapterautorefname~#1\null{第\zhnumber{#1}章\null}
+}{}
+\def\sectionautorefname~#1\null{#1~小节\null}
+\def\subsectionautorefname~#1\null{#1~小节\null}
+\def\subsubsectionautorefname~#1\null{#1~小节\null}
+\def\pageautorefname~#1\null{第~#1~页\null}
+\def\proofautorefname{证明}
+\ifthenelse{\not\isundefined{\chapter}}{
+    \titleformat{\chapter}{\LARGE\bfseries\centering}{第\,\zhnumber{\thechapter}\,章}{1em}{}
+}
+
+\graphicspath{{./}{figure/}}
+
+\begin{document}
+
+\title{基于强化学习的TCP拥塞控制}
+
+%--------------------------------------------------------------------------------------------
+
+\author{钟嘉伦 孙昊海}
+
+\date{2019.1.23}
+
+\maketitle
+
+\input{text/01_introduction.tex}
+
+\input{text/02_motivation.tex}
+
+\input{text/03_method.tex}
+
+\input{text/04_evaluation.tex}
+
+\input{text/05_discussion.tex}
+
+\input{text/06_review.tex}
+
+\input{text/07_conclusion.tex}
+
+\input{text/08_appendix.tex}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\end{document}

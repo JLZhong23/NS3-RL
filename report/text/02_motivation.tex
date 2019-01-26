@@ -1,0 +1,27 @@
+
+\section{研究动机}
+
+工欲善其事，必先利其器。在确定了选题之后，我们小组首先对本次课设的工具进行了分析，首先是不同网络仿真模拟器之间的区别。在研究中比较流行的几类仿真模拟器之中，NS3的编程语言支持Python，这对深度学习乃至强化学习的研究比较友好。
+
+\begin{table}[h]
+	\footnotesize
+	\begin{center}
+	\caption{不同模拟器之间的比较}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|} 
+		\hline 
+	 	& 可获得模型 & 网络层次模拟 & 仿真模型 & 编程语言 & GUI支持 & 是否开源\\ 
+		\hline  
+		OPNET & TCP/IP,ATM,Ethenet & 支持 & FSM & C++ & 是 & 否 \\ 
+		\hline
+		OMNeT++ & TCP/IP, SCSI ,FDDI & 支持 & FSM/Thread & C++ & 是 & 是 \\ 
+		\hline 
+		NS2 & 围绕TCP/IP & 不支持 & FSM & C++/Tcl & 否 & 是 \\
+		\hline
+		NS3 & & & FSM & C++/Python & & 是\\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+同时为了快速上手强化学习在计算机网络仿真之中的应用，我们小组将以自适应视频流传输作为本次课设的切入点，所以我们小组的课程设计将会由这两个方面构成。
+
